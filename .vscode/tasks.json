@@ -1,0 +1,1 @@
+{"version":"2.0.0","tasks":[{"label":"Run SkillMatch Jobs","type":"shell","command":"${workspaceFolder}\\run.bat","problemMatcher":"$javac","group":{"kind":"build","isDefault":true}}]}

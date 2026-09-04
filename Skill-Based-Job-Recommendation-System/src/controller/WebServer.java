@@ -1,0 +1,6 @@
+package controller;
+import com.sun.net.httpserver.*; import java.io.*; import java.net.*; import java.nio.file.*; import java.util.concurrent.*;
+public class WebServer {
+ public static void main(String[] args)throws Exception{HttpServer server=HttpServer.create(new InetSocketAddress(8080),0);server.createContext("/api/",new ApiController());server.createContext("/",new StaticHandler());server.setExecutor(Executors.newCachedThreadPool());server.start();System.out.println("Open http://localhost:8080 in your browser. Press Ctrl+C to stop.");}
+ static class StaticHandler implements HttpHandler {public void handle(HttpExchange e)throws IOException{String requested=e.getRequestURI().getPath();if(requested.equals("/"))requested="/index.html";Path root=Paths.get("web").toAbsolutePath().normalize();Path file=root.resolve(requested.substring(1)).normalize();if(!file.startsWith(root)||!Files.exists(file)){e.sendResponseHeaders(404,-1);return;}String type=requested.endsWith(".css")?"text/css":requested.endsWith(".js")?"application/javascript":requested.endsWith(".html")?"text/html":"application/octet-stream";byte[] data=Files.readAllBytes(file);e.getResponseHeaders().set("Content-Type",type+"; charset=UTF-8");e.sendResponseHeaders(200,data.length);try(OutputStream out=e.getResponseBody()){out.write(data);}}}
+}
