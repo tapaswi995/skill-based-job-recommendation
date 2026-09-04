@@ -1,3 +1,4 @@
+<<<<<<<HEAD
 # Skill-Based Job Recommendation System
 
 A beginner-friendly college placement project built with HTML, CSS, JavaScript, plain Java, JDBC, and MySQL. Students maintain skills, receive ranked job recommendations, apply, and track applications. An administrator can manage jobs and application statuses.
@@ -70,3 +71,4 @@ Add screenshots of the Home, Recommendations, Applications, and Admin pages here
 - Pagination and richer job filters.
 - Resume upload, email notifications, and employer accounts.
 - Recommendation weights based on experience or preferred location.
+
